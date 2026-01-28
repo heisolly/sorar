@@ -328,13 +328,12 @@ function App() {
           </div>
           <div className="max-w-7xl mx-auto px-6 relative flex items-center justify-between">
               <div className="flex items-center gap-2 group cursor-pointer">
-                  {/* Logo - Switch between dark/light if necessary, or use SVG with currentColor */}
                    {navTheme === 'dark' ? (
-                       <img src="/logo.png" alt="Sorar Logo" className="h-14 w-auto transition-transform group-hover:scale-105 duration-500" /> 
+                       <img src="/icon.png" alt="Sorar AI" className="h-10 w-10 transition-transform group-hover:scale-105 duration-500" /> 
                    ) : (
-                       <div className="h-14 flex items-center justify-center font-bold text-3xl">✦</div> // Placeholder if logo image isn't adaptable, generally user should have SVG
+                       <img src="/icon.png" alt="Sorar AI" className="h-10 w-10 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
                    )}
-                  <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar</span>
+                  <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar AI</span>
               </div>
               
               <div className={`hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest ${navTheme === 'light' ? 'text-white/80 hover:text-white' : 'text-stone-500 hover:text-black'} transition-colors`}>

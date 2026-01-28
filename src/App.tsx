@@ -329,9 +329,9 @@ function App() {
           <div className="max-w-7xl mx-auto px-6 relative flex items-center justify-between">
               <div className="flex items-center gap-2 group cursor-pointer">
                    {navTheme === 'dark' ? (
-                       <img src="/icon.png" alt="Sorar AI" className="h-10 w-10 transition-transform group-hover:scale-105 duration-500" /> 
+                       <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500" /> 
                    ) : (
-                       <img src="/icon.png" alt="Sorar AI" className="h-10 w-10 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
+                       <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
                    )}
                   <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar</span>
               </div>

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { supabase } from './lib/supabase';
 import { Download, Users, Eye, Database, Lock } from 'lucide-react';
 
@@ -77,8 +77,8 @@ export function AdminDashboard() {
                 <h1 className="text-4xl font-black uppercase text-stone-900 tracking-tight">Sorar Admin</h1>
                 <p className="text-stone-500">Live Database Overview</p>
             </div>
-            <button onClick={fetchData} className="text-sm font-bold bg-white px-4 py-2 rounded-lg hover:bg-stone-200 border border-stone-200">
-                Refresh Data
+            <button onClick={fetchData} disabled={loading} className="text-sm font-bold bg-white px-4 py-2 rounded-lg hover:bg-stone-200 border border-stone-200 disabled:opacity-50">
+                {loading ? 'Refreshing...' : 'Refresh Data'}
             </button>
         </div>
 

@@ -333,7 +333,7 @@ function App() {
                    ) : (
                        <img src="/icon.png" alt="Sorar AI" className="h-10 w-10 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
                    )}
-                  <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar AI</span>
+                  <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar</span>
               </div>
               
               <div className={`hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest ${navTheme === 'light' ? 'text-white/80 hover:text-white' : 'text-stone-500 hover:text-black'} transition-colors`}>

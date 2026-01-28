@@ -361,14 +361,6 @@ function App() {
               </div>
 
               <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center mt-12">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200 shadow-sm mb-8 animate-fade-in-up">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-peach opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-400"></span>
-                      </span>
-                      <span className="text-xs font-medium uppercase tracking-wider text-stone-600">Public Beta 2.0</span>
-                  </div>
-
                   <h1 className="text-6xl md:text-9xl font-medium tracking-tight leading-[0.9] text-stone-900 mb-8 max-w-5xl hero-title">
                       Don't let anxiety<br />
                       <span className="font-serif italic text-stone-400 pr-4">silence</span> your voice.

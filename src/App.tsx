@@ -9,6 +9,8 @@ import {
   Mic,
   Zap,
   BarChart2,
+  X,
+  ArrowUpRight,
 
   Heart,
   Crown,
@@ -47,6 +49,14 @@ function App() {
   const [navTheme, setNavTheme] = useState<'light' | 'dark'>('dark');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const sideNavItems = [
+    { id: '01', label: 'Features', href: '#features' },
+    { id: '02', label: 'Scenarios', href: '#scenarios' },
+    { id: '03', label: 'Results', href: '#results' },
+    { id: '04', label: 'Method', href: '#method' },
+    { id: '05', label: 'Waitlist', href: '#waitlist' }
+  ];
 
   useEffect(() => {
     // Record Visit
@@ -350,6 +360,72 @@ function App() {
               </div>
           </div>
       </nav>
+
+      <button
+          type="button"
+          onClick={() => setIsSideNavOpen(true)}
+          className="fixed right-6 top-1/2 z-40 inline-flex -translate-y-1/2 items-center gap-3 rounded-full border border-stone-900/10 bg-stone-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.4em] text-white shadow-[0_20px_40px_rgba(15,23,42,0.25)] transition-all hover:-translate-y-1 hover:scale-105"
+          aria-label="Open side navigation"
+      >
+          <span className="h-2 w-2 rounded-full bg-[#d1b072]"></span>
+          Menu
+      </button>
+
+      <div className={`fixed inset-0 z-40 transition-opacity duration-300 ${isSideNavOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
+          <button
+              type="button"
+              aria-label="Close side navigation"
+              onClick={() => setIsSideNavOpen(false)}
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          ></button>
+          <aside className={`absolute right-0 top-0 h-full w-1/2 min-w-[360px] max-w-[720px] transition-transform duration-300 ${isSideNavOpen ? 'translate-x-0' : 'translate-x-full'}`} aria-label="Side navigation">
+              <div className="absolute inset-0 rounded-l-[48px] bg-[#0c0d10] shadow-[-30px_0_90px_rgba(0,0,0,0.7)]"></div>
+              <div className="absolute inset-0 rounded-l-[48px] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),rgba(0,0,0,0)_55%)]"></div>
+              <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent"></div>
+              <div className="relative h-full flex flex-col px-14 py-12 gap-12 text-white">
+                  <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                          <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 opacity-90" />
+                          <span className="text-sm font-semibold tracking-[0.4em] uppercase text-white/70">Sorar</span>
+                      </div>
+                      <button
+                          type="button"
+                          onClick={() => setIsSideNavOpen(false)}
+                          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white transition"
+                      >
+                          <X className="w-4 h-4" />
+                          Close
+                      </button>
+                  </div>
+
+                  <div className="mt-2 border-t border-white/10">
+                      {sideNavItems.map((item, index) => (
+                        <a
+                          key={item.id}
+                          href={item.href}
+                          onClick={() => setIsSideNavOpen(false)}
+                          className={`group flex items-center justify-between gap-6 border-b border-white/10 px-3 py-7 transition-colors ${
+                            index === 1 ? 'bg-white/5' : 'hover:bg-white/5'
+                          }`}
+                        >
+                          <div className="flex items-center gap-6">
+                            <span className="text-xs tracking-[0.3em] text-[#d1b072]">{item.id}</span>
+                            <span className="text-2xl font-serif italic text-white/90 group-hover:text-white">
+                              {item.label}
+                            </span>
+                          </div>
+                          <ArrowUpRight className="w-4 h-4 text-[#d1b072] opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/40">
+                      <span>Private Intelligence</span>
+                      <span>Social Confidence</span>
+                  </div>
+              </div>
+          </aside>
+      </div>
 
       <main className="w-full relative z-10">
           

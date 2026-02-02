@@ -369,7 +369,41 @@ function App() {
                   </p>
 
 
+
+                  <form onSubmit={handleWaitlistSubmit} className="relative group w-full max-w-sm">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-peach to-orange-600 rounded-full opacity-25 group-hover:opacity-50 blur transition duration-1000 group-hover:duration-200"></div>
+                      <div className="relative flex items-center bg-white rounded-full p-2 ring-1 ring-stone-900/5 shadow-xl">
+                          <div className="pl-4 pr-3 text-stone-400">
+                             <Sparkles className="w-5 h-5 text-peach animate-pulse" />
+                          </div>
+                          <input 
+                              type="email" 
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              placeholder="Enter your email for early access..." 
+                              className="flex-1 bg-transparent border-none outline-none text-stone-900 placeholder:text-stone-400 text-sm font-medium h-10 w-full min-w-0"
+                              disabled={submitted}
+                          />
+                          <button 
+                              type="submit"
+                              disabled={submitted}
+                              className="bg-stone-900 text-white rounded-full p-3 hover:bg-stone-800 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed group-submit shrink-0"
+                          >
+                              {submitted ? (
+                                  <span className="text-xs font-bold px-2">JOINED</span>
+                              ) : (
+                                  <ArrowRight className="w-4 h-4 group-submit-hover:translate-x-1 transition-transform" />
+                              )}
+                          </button>
+                      </div>
+                      <div className="text-center mt-4 h-6">
+                        {submitted && <p className="text-xs font-medium text-green-600 animate-fade-in">You're on the list. We'll be in touch.</p>}
+                        {!submitted && <p className="text-[10px] uppercase tracking-widest text-stone-400 font-medium">Limited Beta • <span className="text-peach">3 spots left today</span></p>}
+                      </div>
+
+                  </form>
               </div>
+
 
               {/* Flying UI Elements Container */}
               <div className="relative w-full h-[60vh] mt-20 perspective-1000">

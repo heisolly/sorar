@@ -65,6 +65,57 @@
   text-wrap: balance;
 }
 
+@layer components {
+  .nav-glass {
+    position: relative;
+  }
+  .nav-glass::before {
+    content: "";
+    position: absolute;
+    inset: 10px 20px auto 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 215, 196, 0), rgba(255, 215, 196, 0.7), rgba(255, 215, 196, 0));
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .nav-glass::after {
+    content: "";
+    position: absolute;
+    inset: -20px 20% auto 20%;
+    height: 120px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(244, 175, 146, 0.25) 0%, rgba(244, 175, 146, 0) 70%);
+    filter: blur(8px);
+    pointer-events: none;
+  }
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(244, 175, 146, 0), rgba(244, 175, 146, 1), rgba(244, 175, 146, 0));
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+  .hero-badge {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 231, 215, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+  }
+}
+
 /* Noise Texture */
 .noise-bg {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");

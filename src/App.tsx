@@ -334,6 +334,7 @@ function App() {
       {/* Navigation - Dynamic Theme */}
       <nav className={`fixed top-0 z-50 w-full transition-all duration-300 py-4 nav-glass ${navTheme === 'light' ? 'text-white' : 'text-stone-900'}`} id="navbar">
           <div className="absolute inset-0 bg-transparent transition-colors duration-300">
+             {/* Optional: Add background blur or color based on theme if needed, currently kept transparent-ish */}
              {navTheme === 'dark' && <div className="absolute inset-0 bg-[#FDFCFB]/80 backdrop-blur-md border-b border-stone-100/50 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"></div>}
              {navTheme === 'light' && <div className="absolute inset-0 bg-black/20 backdrop-blur-md border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.25)]"></div>}
           </div>

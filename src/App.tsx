@@ -9,7 +9,6 @@ import {
   Mic,
   Zap,
   BarChart2,
-  Menu,
   X,
   ArrowUpRight,
 
@@ -357,17 +356,19 @@ function App() {
                   <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-transparent text-stone-900 border-stone-200 hover:border-stone-900'} border px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.12)]`}>
                       Join Waitlist
                   </a>
-                  <button
-                      type="button"
-                      onClick={() => setIsSideNavOpen(true)}
-                      className={`${navTheme === 'light' ? 'bg-white/10 text-white border-white/20' : 'bg-stone-900 text-white border-stone-900'} hidden md:inline-flex items-center justify-center border w-11 h-11 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.18)]`}
-                      aria-label="Open side navigation"
-                  >
-                      <Menu className="w-4 h-4" />
-                  </button>
               </div>
           </div>
       </nav>
+
+      <button
+          type="button"
+          onClick={() => setIsSideNavOpen(true)}
+          className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 md:inline-flex items-center gap-3 rounded-full border border-stone-900/10 bg-stone-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.4em] text-white shadow-[0_20px_40px_rgba(15,23,42,0.25)] transition-all hover:-translate-y-1 hover:scale-105"
+          aria-label="Open side navigation"
+      >
+          <span className="h-2 w-2 rounded-full bg-[#d1b072]"></span>
+          Menu
+      </button>
 
       <div className={`fixed inset-0 z-40 transition-opacity duration-300 ${isSideNavOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
           <button
@@ -377,9 +378,10 @@ function App() {
               className="absolute inset-0 bg-black/70 backdrop-blur-sm"
           ></button>
           <aside className={`absolute right-0 top-0 h-full w-1/2 min-w-[360px] max-w-[720px] transition-transform duration-300 ${isSideNavOpen ? 'translate-x-0' : 'translate-x-full'}`} aria-label="Side navigation">
-              <div className="absolute inset-0 rounded-l-[48px] bg-[#0c0d10] shadow-[-30px_0_80px_rgba(0,0,0,0.65)]"></div>
+              <div className="absolute inset-0 rounded-l-[48px] bg-[#0c0d10] shadow-[-30px_0_90px_rgba(0,0,0,0.7)]"></div>
               <div className="absolute inset-0 rounded-l-[48px] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),rgba(0,0,0,0)_55%)]"></div>
-              <div className="relative h-full flex flex-col px-14 py-10 gap-10 text-white">
+              <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent"></div>
+              <div className="relative h-full flex flex-col px-14 py-12 gap-12 text-white">
                   <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                           <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 opacity-90" />
@@ -388,19 +390,20 @@ function App() {
                       <button
                           type="button"
                           onClick={() => setIsSideNavOpen(false)}
-                          className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white transition"
+                          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white transition"
                       >
+                          <X className="w-4 h-4" />
                           Close
                       </button>
                   </div>
 
-                  <div className="mt-6 border-t border-white/10">
+                  <div className="mt-2 border-t border-white/10">
                       {sideNavItems.map((item, index) => (
                         <a
                           key={item.id}
                           href={item.href}
                           onClick={() => setIsSideNavOpen(false)}
-                          className={`group flex items-center justify-between gap-6 border-b border-white/10 py-6 transition-colors ${
+                          className={`group flex items-center justify-between gap-6 border-b border-white/10 px-3 py-7 transition-colors ${
                             index === 1 ? 'bg-white/5' : 'hover:bg-white/5'
                           }`}
                         >
@@ -415,8 +418,9 @@ function App() {
                       ))}
                   </div>
 
-                  <div className="mt-auto text-xs uppercase tracking-[0.4em] text-white/40">
-                      Private Intelligence for Social Confidence
+                  <div className="mt-auto flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/40">
+                      <span>Private Intelligence</span>
+                      <span>Social Confidence</span>
                   </div>
               </div>
           </aside>

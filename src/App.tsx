@@ -363,7 +363,7 @@ function App() {
       <button
           type="button"
           onClick={() => setIsSideNavOpen(true)}
-          className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 md:inline-flex items-center gap-3 rounded-full border border-stone-900/10 bg-stone-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.4em] text-white shadow-[0_20px_40px_rgba(15,23,42,0.25)] transition-all hover:-translate-y-1 hover:scale-105"
+          className="fixed right-6 top-1/2 z-40 inline-flex -translate-y-1/2 items-center gap-3 rounded-full border border-stone-900/10 bg-stone-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.4em] text-white shadow-[0_20px_40px_rgba(15,23,42,0.25)] transition-all hover:-translate-y-1 hover:scale-105"
           aria-label="Open side navigation"
       >
           <span className="h-2 w-2 rounded-full bg-[#d1b072]"></span>

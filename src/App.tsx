@@ -334,15 +334,14 @@ function App() {
                   <span className="text-lg font-medium tracking-tight font-serif ml-1">Sorar</span>
               </div>
               
-              <div className={`hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest ${navTheme === 'light' ? 'text-white/80 hover:text-white' : 'text-stone-500 hover:text-black'} transition-colors`}>
-                  <a href="#features" className="transition-colors">Features</a>
-                  <a href="#scenarios" className="transition-colors">Scenarios</a>
+              <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${navTheme === 'light' ? 'text-white/90 hover:text-white' : 'text-stone-600 hover:text-stone-900'} transition-colors`}>
+                  <a href="#features" className="transition-colors hover:text-peach">Features</a>
+                  <a href="#scenarios" className="transition-colors hover:text-peach">Scenarios</a>
               </div>
 
               <div className="flex items-center gap-4">
-                  <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach' : 'bg-stone-900 text-white hover:bg-stone-800'} text-xs font-semibold uppercase tracking-wider px-5 py-3 rounded-full transition-all hover:scale-105 flex items-center gap-2 shadow-lg`}>
-                      <span>Waitlist</span>
-                      <ArrowRight className="w-4 h-4" />
+                  <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-transparent text-stone-900 border-stone-200 hover:border-stone-900'} border px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95`}>
+                      Join Waitlist
                   </a>
               </div>
           </div>
@@ -370,37 +369,45 @@ function App() {
 
 
 
-                  <form onSubmit={handleWaitlistSubmit} className="relative group w-full max-w-sm">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-peach to-orange-600 rounded-full opacity-25 group-hover:opacity-50 blur transition duration-1000 group-hover:duration-200"></div>
-                      <div className="relative flex items-center bg-white rounded-full p-2 ring-1 ring-stone-900/5 shadow-xl">
-                          <div className="pl-4 pr-3 text-stone-400">
-                             <Sparkles className="w-5 h-5 text-peach animate-pulse" />
+
+                  <form onSubmit={handleWaitlistSubmit} className="relative group w-full max-w-md mx-auto mt-8">
+                      {/* Refined Glow - Tighter and warmer */}
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-peach/40 via-orange-500/40 to-peach/40 rounded-full opacity-0 group-hover:opacity-100 blur-md transition duration-700 ease-out"></div>
+                      
+                      <div className="relative flex items-center bg-white/80 backdrop-blur-xl rounded-full p-1.5 ring-1 ring-stone-900/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                          <div className="pl-4 pr-2 text-peach">
+                             <Sparkles className="w-4 h-4" />
                           </div>
                           <input 
                               type="email" 
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
-                              placeholder="Enter your email for early access..." 
-                              className="flex-1 bg-transparent border-none outline-none text-stone-900 placeholder:text-stone-400 text-sm font-medium h-10 w-full min-w-0"
+                              placeholder="Enter your email to join..." 
+                              className="flex-1 bg-transparent border-none outline-none text-stone-900 placeholder:text-stone-400/80 text-base font-normal h-11 w-full min-w-0 px-2"
                               disabled={submitted}
                           />
                           <button 
                               type="submit"
                               disabled={submitted}
-                              className="bg-stone-900 text-white rounded-full p-3 hover:bg-stone-800 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed group-submit shrink-0"
+                              className="bg-stone-900 text-white rounded-full p-3 hover:bg-stone-800 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-stone-900/20"
                           >
                               {submitted ? (
-                                  <span className="text-xs font-bold px-2">JOINED</span>
+                                  <span className="text-sm font-medium px-2">Joined</span>
                               ) : (
-                                  <ArrowRight className="w-4 h-4 group-submit-hover:translate-x-1 transition-transform" />
+                                  <ArrowRight className="w-5 h-5" />
                               )}
                           </button>
                       </div>
-                      <div className="text-center mt-4 h-6">
-                        {submitted && <p className="text-xs font-medium text-green-600 animate-fade-in">You're on the list. We'll be in touch.</p>}
-                        {!submitted && <p className="text-[10px] uppercase tracking-widest text-stone-400 font-medium">Limited Beta • <span className="text-peach">3 spots left today</span></p>}
-                      </div>
-
+                      
+                      {/* Success Message Only */}
+                      {submitted && (
+                        <div className="absolute top-full left-0 w-full text-center mt-3">
+                            <p className="text-sm font-medium text-green-600 animate-fade-in flex items-center justify-center gap-1.5">
+                                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                                You're on the list.
+                            </p>
+                        </div>
+                      )}
                   </form>
               </div>
 

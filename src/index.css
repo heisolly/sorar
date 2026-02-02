@@ -109,49 +109,6 @@
   .nav-link:focus-visible::after {
     transform: scaleX(1);
   }
-  .side-nav {
-    position: relative;
-  }
-  .side-nav::before {
-    content: "";
-    position: absolute;
-    inset: 16px 14px auto 14px;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(255, 215, 196, 0), rgba(255, 215, 196, 0.9), rgba(255, 215, 196, 0));
-    opacity: 0.8;
-    pointer-events: none;
-  }
-  .side-nav::after {
-    content: "";
-    position: absolute;
-    inset: auto -16px -20px -16px;
-    height: 120px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(244, 175, 146, 0.25) 0%, rgba(244, 175, 146, 0) 70%);
-    filter: blur(12px);
-    pointer-events: none;
-  }
-  .side-link {
-    position: relative;
-  }
-  .side-link::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    height: 2px;
-    width: 24px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(244, 175, 146, 0), rgba(244, 175, 146, 1), rgba(244, 175, 146, 0));
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
-  }
-  .side-link:hover::after,
-  .side-link:focus-visible::after {
-    transform: translateX(-50%) scaleX(1);
-  }
 }
 
 /* Noise Texture */

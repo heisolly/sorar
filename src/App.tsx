@@ -11,6 +11,7 @@ import {
   BarChart2,
   Menu,
   X,
+  ArrowUpRight,
 
   Heart,
   Crown,
@@ -50,6 +51,13 @@ function App() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const sideNavItems = [
+    { id: '01', label: 'Features', href: '#features' },
+    { id: '02', label: 'Scenarios', href: '#scenarios' },
+    { id: '03', label: 'Results', href: '#results' },
+    { id: '04', label: 'Method', href: '#method' },
+    { id: '05', label: 'Waitlist', href: '#waitlist' }
+  ];
 
   useEffect(() => {
     // Record Visit
@@ -352,10 +360,10 @@ function App() {
                   <button
                       type="button"
                       onClick={() => setIsSideNavOpen(true)}
-                      className={`${navTheme === 'light' ? 'bg-white/10 text-white border-white/20' : 'bg-stone-900 text-white border-stone-900'} hidden md:inline-flex items-center gap-2 border px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.18)]`}
+                      className={`${navTheme === 'light' ? 'bg-white/10 text-white border-white/20' : 'bg-stone-900 text-white border-stone-900'} hidden md:inline-flex items-center justify-center border w-11 h-11 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.18)]`}
+                      aria-label="Open side navigation"
                   >
                       <Menu className="w-4 h-4" />
-                      Nav
                   </button>
               </div>
           </div>
@@ -366,42 +374,49 @@ function App() {
               type="button"
               aria-label="Close side navigation"
               onClick={() => setIsSideNavOpen(false)}
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
           ></button>
-          <aside className={`absolute right-0 top-0 h-full w-1/2 min-w-[360px] max-w-[720px] transition-transform duration-300 side-nav ${isSideNavOpen ? 'translate-x-0' : 'translate-x-full'} ${navTheme === 'light' ? 'text-white' : 'text-stone-900'}`} aria-label="Side navigation">
-              <div className="absolute inset-0 bg-transparent transition-colors duration-300">
-                 {navTheme === 'dark' && <div className="absolute inset-0 rounded-l-[48px] bg-[#FDFCFB]/90 backdrop-blur-md border-l border-stone-200/60 shadow-[-20px_0_60px_rgba(15,23,42,0.18)]"></div>}
-                 {navTheme === 'light' && <div className="absolute inset-0 rounded-l-[48px] bg-black/40 backdrop-blur-md border-l border-white/10 shadow-[-20px_0_60px_rgba(0,0,0,0.35)]"></div>}
-              </div>
-              <div className="relative h-full flex flex-col px-12 py-10 gap-10">
+          <aside className={`absolute right-0 top-0 h-full w-1/2 min-w-[360px] max-w-[720px] transition-transform duration-300 ${isSideNavOpen ? 'translate-x-0' : 'translate-x-full'}`} aria-label="Side navigation">
+              <div className="absolute inset-0 rounded-l-[48px] bg-[#0c0d10] shadow-[-30px_0_80px_rgba(0,0,0,0.65)]"></div>
+              <div className="absolute inset-0 rounded-l-[48px] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),rgba(0,0,0,0)_55%)]"></div>
+              <div className="relative h-full flex flex-col px-14 py-10 gap-10 text-white">
                   <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                           {navTheme === 'dark' ? (
-                               <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500" /> 
-                           ) : (
-                               <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
-                           )}
-                          <span className="text-base font-semibold tracking-[0.3em] uppercase text-stone-500">Sorar</span>
+                          <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 opacity-90" />
+                          <span className="text-sm font-semibold tracking-[0.4em] uppercase text-white/70">Sorar</span>
                       </div>
                       <button
                           type="button"
                           onClick={() => setIsSideNavOpen(false)}
-                          className={`${navTheme === 'light' ? 'border-white/20 text-white' : 'border-stone-200 text-stone-900'} border rounded-full p-3 transition-all hover:scale-105`}
+                          className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white transition"
                       >
-                          <X className="w-5 h-5" />
+                          Close
                       </button>
                   </div>
-                  
-                  <div className={`flex flex-col gap-6 text-sm font-semibold uppercase tracking-[0.4em] ${navTheme === 'light' ? 'text-white/90 hover:text-white' : 'text-stone-600 hover:text-stone-900'} transition-colors`}>
-                      <a href="#features" className="side-link transition-colors hover:text-peach" onClick={() => setIsSideNavOpen(false)}>Features</a>
-                      <a href="#scenarios" className="side-link transition-colors hover:text-peach" onClick={() => setIsSideNavOpen(false)}>Scenarios</a>
-                      <a href="#results" className="side-link transition-colors hover:text-peach" onClick={() => setIsSideNavOpen(false)}>Results</a>
+
+                  <div className="mt-6 border-t border-white/10">
+                      {sideNavItems.map((item, index) => (
+                        <a
+                          key={item.id}
+                          href={item.href}
+                          onClick={() => setIsSideNavOpen(false)}
+                          className={`group flex items-center justify-between gap-6 border-b border-white/10 py-6 transition-colors ${
+                            index === 1 ? 'bg-white/5' : 'hover:bg-white/5'
+                          }`}
+                        >
+                          <div className="flex items-center gap-6">
+                            <span className="text-xs tracking-[0.3em] text-[#d1b072]">{item.id}</span>
+                            <span className="text-2xl font-serif italic text-white/90 group-hover:text-white">
+                              {item.label}
+                            </span>
+                          </div>
+                          <ArrowUpRight className="w-4 h-4 text-[#d1b072] opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      ))}
                   </div>
 
-                  <div className="mt-auto">
-                      <a href="#waitlist" onClick={() => setIsSideNavOpen(false)} className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-stone-900 text-white border-stone-900 hover:border-stone-900'} inline-flex items-center justify-center border px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.2)]`}>
-                          Join Waitlist
-                      </a>
+                  <div className="mt-auto text-xs uppercase tracking-[0.4em] text-white/40">
+                      Private Intelligence for Social Confidence
                   </div>
               </div>
           </aside>

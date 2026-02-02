@@ -4,8 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import {
   ArrowRight,
-  Download,
-  PlayCircle,
   Sparkles,
   Activity,
   Mic,
@@ -370,16 +368,7 @@ function App() {
                       The first AI social coach that whispers the right words in real-time. Navigate dates, interviews, and conflict with effortless aura.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                      <button className="bg-peach text-stone-900 text-sm font-semibold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-[#f5d0c0] transition-transform hover:scale-105 flex items-center gap-2 shadow-xl shadow-orange-900/5">
-                          <Download className="w-4 h-4" />
-                          Get the App
-                      </button>
-                      <button className="bg-white text-stone-900 border border-stone-200 text-sm font-semibold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-stone-50 transition-colors flex items-center gap-2 shadow-sm">
-                          <PlayCircle className="w-4 h-4" />
-                          See it in action
-                      </button>
-                  </div>
+
               </div>
 
               {/* Flying UI Elements Container */}

@@ -315,14 +315,17 @@ function App() {
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-[#FDFCFB] text-stone-900 antialiased selection:bg-peach selection:text-stone-900 overflow-x-hidden font-sans">
+    <div ref={containerRef} className="bg-[#FDFCFB] text-stone-900 antialiased selection:bg-peach selection:text-stone-900 overflow-x-hidden font-sans relative">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(244,175,146,0.25),rgba(244,175,146,0)_70%)] blur-3xl"></div>
+        <div className="absolute bottom-0 right-[-10%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(120,113,108,0.18),rgba(120,113,108,0)_70%)] blur-3xl"></div>
+      </div>
       
       {/* Navigation - Dynamic Theme */}
-      <nav className={`fixed top-0 z-50 w-full transition-all duration-300 py-4 ${navTheme === 'light' ? 'text-white' : 'text-stone-900'}`} id="navbar">
+      <nav className={`fixed top-0 z-50 w-full transition-all duration-300 py-4 nav-glass ${navTheme === 'light' ? 'text-white' : 'text-stone-900'}`} id="navbar">
           <div className="absolute inset-0 bg-transparent transition-colors duration-300">
-             {/* Optional: Add background blur or color based on theme if needed, currently kept transparent-ish */}
-             {navTheme === 'dark' && <div className="absolute inset-0 bg-[#FDFCFB]/80 backdrop-blur-md border-b border-stone-100/50"></div>}
-             {navTheme === 'light' && <div className="absolute inset-0 bg-black/10 backdrop-blur-md border-b border-white/10"></div>}
+             {navTheme === 'dark' && <div className="absolute inset-0 bg-[#FDFCFB]/80 backdrop-blur-md border-b border-stone-100/50 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"></div>}
+             {navTheme === 'light' && <div className="absolute inset-0 bg-black/20 backdrop-blur-md border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.25)]"></div>}
           </div>
           <div className="max-w-7xl mx-auto px-6 relative flex items-center justify-between">
               <div className="flex items-center gap-2 group cursor-pointer">
@@ -335,19 +338,47 @@ function App() {
               </div>
               
               <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${navTheme === 'light' ? 'text-white/90 hover:text-white' : 'text-stone-600 hover:text-stone-900'} transition-colors`}>
-                  <a href="#features" className="transition-colors hover:text-peach">Features</a>
-                  <a href="#scenarios" className="transition-colors hover:text-peach">Scenarios</a>
+                  <a href="#features" className="nav-link transition-colors hover:text-peach">Features</a>
+                  <a href="#scenarios" className="nav-link transition-colors hover:text-peach">Scenarios</a>
               </div>
 
               <div className="flex items-center gap-4">
-                  <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-transparent text-stone-900 border-stone-200 hover:border-stone-900'} border px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95`}>
+                  <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-transparent text-stone-900 border-stone-200 hover:border-stone-900'} border px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.12)]`}>
                       Join Waitlist
                   </a>
               </div>
           </div>
       </nav>
 
-      <main className="w-full relative z-10">
+      <aside className={`fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 md:flex transition-all duration-300 side-nav ${navTheme === 'light' ? 'text-white' : 'text-stone-900'}`} aria-label="Side navigation">
+          <div className="absolute inset-0 bg-transparent transition-colors duration-300">
+             {navTheme === 'dark' && <div className="absolute inset-0 rounded-[32px] bg-[#FDFCFB]/80 backdrop-blur-md border border-stone-200/60 shadow-[0_20px_60px_rgba(15,23,42,0.18)]"></div>}
+             {navTheme === 'light' && <div className="absolute inset-0 rounded-[32px] bg-black/30 backdrop-blur-md border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"></div>}
+          </div>
+          <div className="relative flex flex-col items-center gap-6 px-4 py-6">
+              <div className="flex flex-col items-center gap-3">
+                   {navTheme === 'dark' ? (
+                       <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500" /> 
+                   ) : (
+                       <img src="/icon.png" alt="Sorar AI" className="h-12 w-12 transition-transform group-hover:scale-105 duration-500 brightness-0 invert" />
+                   )}
+                  <span className="text-sm font-medium tracking-[0.3em] uppercase text-stone-500">Sorar</span>
+              </div>
+              
+              <div className={`flex flex-col items-center gap-6 text-xs font-semibold uppercase tracking-[0.35em] ${navTheme === 'light' ? 'text-white/90 hover:text-white' : 'text-stone-500 hover:text-stone-900'} transition-colors`}>
+                  <a href="#features" className="side-link transition-colors hover:text-peach">Features</a>
+                  <a href="#scenarios" className="side-link transition-colors hover:text-peach">Scenarios</a>
+              </div>
+
+              <div className="flex flex-col items-center gap-4">
+                  <a href="#waitlist" className={`${navTheme === 'light' ? 'bg-white text-black hover:bg-peach border-transparent' : 'bg-stone-900 text-white border-stone-900 hover:border-stone-900'} border px-5 py-2.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_12px_30px_rgba(15,23,42,0.2)]`}>
+                      Join
+                  </a>
+              </div>
+          </div>
+      </aside>
+
+      <main className="w-full relative z-10 md:pl-28">
           
           {/* Hero Section */}
           <div className="relative w-full min-h-[110vh] flex flex-col pt-32 pb-12 overflow-hidden bg-[#FDFCFB]">
@@ -355,12 +386,13 @@ function App() {
                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                   <div className="parallax-bg absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-peach/30 rounded-full blur-[120px]"></div>
                   <div className="parallax-bg absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-stone-200/40 rounded-full blur-[100px]"></div>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),rgba(255,255,255,0))]"></div>
               </div>
 
               <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center mt-12">
                   <h1 className="text-6xl md:text-9xl font-medium tracking-tight leading-[0.9] text-stone-900 mb-8 max-w-5xl hero-title">
                       Don't let anxiety<br />
-                      <span className="font-serif italic text-stone-400 pr-4">silence</span> your voice.
+                      <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-stone-500 to-stone-900 pr-4">silence</span> your voice.
                   </h1>
 
                   <p className="text-lg md:text-xl font-normal text-stone-600 mb-10 max-w-xl leading-relaxed text-balance">
@@ -374,7 +406,7 @@ function App() {
                       {/* Refined Glow - Tighter and warmer */}
                       <div className="absolute -inset-0.5 bg-gradient-to-r from-peach/40 via-orange-500/40 to-peach/40 rounded-full opacity-0 group-hover:opacity-100 blur-md transition duration-700 ease-out"></div>
                       
-                      <div className="relative flex items-center bg-white/80 backdrop-blur-xl rounded-full p-1.5 ring-1 ring-stone-900/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                      <div className="relative flex items-center bg-white/85 backdrop-blur-xl rounded-full p-1.5 ring-1 ring-stone-900/5 shadow-[0_18px_45px_rgba(15,23,42,0.08)] transition-all group-hover:shadow-[0_18px_45px_rgba(15,23,42,0.14)]">
                           <div className="pl-4 pr-2 text-peach">
                              <Sparkles className="w-4 h-4" />
                           </div>
@@ -389,8 +421,9 @@ function App() {
                           <button 
                               type="submit"
                               disabled={submitted}
-                              className="bg-stone-900 text-white rounded-full p-3 hover:bg-stone-800 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-stone-900/20"
+                              className="bg-stone-900 text-white rounded-full p-3 hover:bg-stone-800 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-stone-900/25 relative overflow-hidden"
                           >
+                              <span className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></span>
                               {submitted ? (
                                   <span className="text-sm font-medium px-2">Joined</span>
                               ) : (
@@ -1009,8 +1042,9 @@ function App() {
 
           {/* Footer / Waitlist Section */}
           <footer className="bg-peach pt-24 pb-8 px-4" id="waitlist">
-              <div className="max-w-4xl mx-auto bg-white rounded-[3rem] p-8 md:p-16 text-center shadow-2xl relative overflow-hidden mb-12">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-peach rounded-full blur-[100px] opacity-50 pointer-events-none"></div>
+              <div className="max-w-4xl mx-auto bg-white/95 rounded-[3rem] p-8 md:p-16 text-center shadow-[0_30px_80px_rgba(15,23,42,0.2)] relative overflow-hidden mb-12 border border-white/70">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-peach rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
+                  <div className="absolute -bottom-20 right-10 w-48 h-48 bg-white rounded-full blur-[90px] opacity-60 pointer-events-none"></div>
                   <div className="relative z-10">
                       <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-stone-900">Join The Waitlist</h2>
                       <p className="text-stone-500 mb-10 max-w-md mx-auto">Get exclusive access to the beta and a personalized Aura analysis report.</p>
